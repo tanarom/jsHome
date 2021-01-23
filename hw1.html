@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<ul id="myUL"><li>List Item 1</li><li>List Item 2</li><li>List Item 3</li><li>List Item 4</li><li>List Item 5</li></ul>
+	<form>
+		<input type="button" value = "Выбрать первый элемент" onclick="firstElement(this.form)" style="width:200px"><br>
+		<input type="button" value = "Выбрать последний элемент" onclick="lastElement(this.form)" style="width:200px"><br>
+		<input type="button" value = "Выбрать следующий элемент" onclick="nextElement(this.form)" style="width:200px"><br>
+		<input type="button" value = "Выбрать предыдущий элемент" onclick="beforeElement(this.form)" style="width:200px"><br>
+		<input type="button" value = "Добавить элемент" onclick="append(this.form)" style="width:200px"><br>
+		<input type="button" value = "Удалить элемент"  onclick="remove(this.form)" style="width:200px"><br>
+		<input type="button" value = "Добавить в начало" onclick="appendBefore(this.form)" style="width:200px">	
+	</form>
+
+	<script>
+		function firstElement(){
+			var elem = document.getElementsByTagName('li')[0];
+			elem.style.color = 'red';
+		}
+		function lastElement(){
+			var elem1 = document.getElementById("myUL").lastChild;
+			elem1.style.color = 'red';	
+		}
+		function nextElement(){
+			var elem1 =  document.getElementById("myUL");
+			var list = elem1.firstElementChild;
+				list = list.nextSibling;	
+				list.style.color = 'grey';
+		}
+		function beforeElement(){
+			var elem1 = document.getElementById('myUL');
+			var list = elem1.lastElementChild;
+				list = list.previousElementSibling;
+				list.style.color ='green';
+		}
+		function append(){
+			var newElem = document.createElement('li');
+				newElem.innerHTML = 'NEW ITEM';
+				document.getElementById('myUL').appendChild(newElem);
+		}
+		function remove(){
+			var newElem = document.getElementById('myUL');
+			var oneElem = newElem.lastChild;
+			newElem.removeChild(oneElem);
+		}
+		function appendBefore(){
+			var elem = document.getElementById('myUL');
+			var newElem = document.createElement('li');
+				newElem.innerHTML = 'NEW ITEM';
+				elem.insertBefore(newElem, elem.firstElementChild);
+		}	
+		</script>
+
+	
+	
+</body>
+</html>
